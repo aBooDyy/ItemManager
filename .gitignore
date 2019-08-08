@@ -1,0 +1,4 @@
+# Project exclude paths
+/Legacy/target/
+/target/
+/v1_13Plus/target/

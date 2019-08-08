@@ -1,0 +1,24 @@
+name: ItemManager
+description: A plugin to manage items in player's inventory.
+version: ${project.parent.version}
+main: me.aboodyy.itemmanager.ItemManager
+author: aBooDyy
+website: aBooDyy.net
+
+permissions:
+  itemmanager.admin:
+    default: op
+    children:
+      itemmanager.help: true
+      itemmanager.reload: true
+      itemmanager.rename: true
+      itemmanager.lore.add: true
+      itemmanager.lore.remove: true
+      itemmanager.lore.set: true
+      itemmanager.check: true
+      itemmanager.give: true
+      itemmanager.remove: true
+      itemmanager.enchant: true
+      itemmanager.enchant.remove: true
+      itemmanager.glow: true
+      itemmanager.glow.remove: true
