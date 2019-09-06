@@ -53,7 +53,7 @@ public class SpigotUpdateChecker implements Listener {
         }
 
         pl.getLogger().warning(" ");
-        pl.getLogger().warning("New version is available at:");
+        pl.getLogger().warning("A New version is available at:");
         pl.getLogger().warning("https://www.spigotmc.org/resources/70136/");
         pl.getLogger().warning(" ");
         pl.getLogger().warning("Download it to stay up to date!");
@@ -62,14 +62,15 @@ public class SpigotUpdateChecker implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (!pl.getConfig().getBoolean("check_updates"))
+        if (!pl.getConfig().getBoolean("check_updates") || isLatest())
             return;
 
         Player p = e.getPlayer();
         if (p.isOp() || p.hasPermission("itemmanager.admin")) {
             p.sendMessage(" ");
-            p.sendMessage(color("&9New version of ItemManager is available and can be found here:"));
-            p.sendMessage(color("&bhttps://www.spigotmc.org/resources/70136/"));
+            p.sendMessage(color("&bA new version of &9ItemManager &bis available!"));
+            p.sendMessage(color("&7Download it now from:"));
+            p.sendMessage(color("&fhttps://www.spigotmc.org/resources/70136/"));
             p.sendMessage(" ");
         }
     }
