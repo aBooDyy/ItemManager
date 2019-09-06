@@ -1,10 +1,10 @@
 package me.aboodyy.itemmanager.commands.enchantcommands;
 
-import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
+import me.aboodyy.itemmanager.commands.ItemManagerCommand;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -18,7 +18,7 @@ import static me.aboodyy.itemmanager.utils.Messages.color;
 
 
 @CommandAlias("itemmanager|imanager|im")
-public class EnchantCommand extends BaseCommand {
+public class EnchantCommand extends ItemManagerCommand {
 
     @Subcommand("enchant")
     @CommandCompletion("@enchantments @range:1-5 @players unsafe")

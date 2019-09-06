@@ -83,7 +83,7 @@ public class ItemManager extends JavaPlugin {
                 Arrays.asList("<lore>", "<line>", "ALL")
         );
 
-        cmdManager.registerCommand(new HelpCommand());
+        cmdManager.registerCommand(new ItemManagerCommand());
         cmdManager.registerCommand(new RenameCommand());
         cmdManager.registerCommand(new ReloadCommand());
         cmdManager.registerCommand(new SetCommand());

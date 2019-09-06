@@ -85,7 +85,7 @@ public class Utils {
 
         for (String arg : args) {
             for (String key : getConfig().getConfigurationSection("abbreviations." + path).getKeys(false)) {
-                arg.replace("{" + key + "}", getConfig().getString("abbreviations." + path + "." + key));
+                arg = arg.replace("{" + key + "}", getConfig().getString("abbreviations." + path + "." + key));
             }
             newArgs.addAll(Arrays.asList(arg.split(" ")));
         }

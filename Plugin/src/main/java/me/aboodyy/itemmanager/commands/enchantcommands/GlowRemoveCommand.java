@@ -1,10 +1,10 @@
 package me.aboodyy.itemmanager.commands.enchantcommands;
 
-import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
+import me.aboodyy.itemmanager.commands.ItemManagerCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -16,7 +16,7 @@ import static me.aboodyy.itemmanager.utils.ItemUtils.getItemInHand;
 import static me.aboodyy.itemmanager.utils.Messages.color;
 
 @CommandAlias("itemmanager|imanager|im")
-public class GlowRemoveCommand extends BaseCommand {
+public class GlowRemoveCommand extends ItemManagerCommand {
 
     @Subcommand("glow remove")
     @CommandCompletion("@players")

@@ -10,7 +10,7 @@ import static me.aboodyy.itemmanager.utils.Messages.*;
 import static me.aboodyy.itemmanager.utils.Utils.getConfig;
 
 @CommandAlias("itemmanager|imanager|im")
-public class HelpCommand extends BaseCommand {
+public class ItemManagerCommand extends BaseCommand {
 
     @Default
     @CatchUnknown
@@ -19,7 +19,7 @@ public class HelpCommand extends BaseCommand {
         sender.sendMessage(color("&cIncorrect usage. &7/ItemManager help"));
     }
 
-    @co.aikar.commands.annotation.HelpCommand
+    @HelpCommand
     @CommandPermission("itemmanager.help")
     public void onHelp(CommandSender sender) {
         String space = getConfig().getString("symbols.space", "_");

@@ -1,11 +1,11 @@
 package me.aboodyy.itemmanager.commands.inventorycommands;
 
-import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import me.aboodyy.itemmanager.ItemWrapper;
+import me.aboodyy.itemmanager.commands.ItemManagerCommand;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -17,7 +17,7 @@ import static me.aboodyy.itemmanager.utils.Utils.convertAbbr;
 import static org.bukkit.Material.matchMaterial;
 
 @CommandAlias("itemmanager|imanager|im")
-public class CheckCommand extends BaseCommand {
+public class CheckCommand extends ItemManagerCommand {
 
     @Subcommand("check")
     @CommandCompletion("@players @modifiers")
