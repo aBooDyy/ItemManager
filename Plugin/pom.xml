@@ -34,14 +34,14 @@
         <dependency>
             <groupId>me.aboodyy.itemmanager</groupId>
             <artifactId>v1_13Plus</artifactId>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.aboodyy.itemmanager</groupId>
             <artifactId>Legacy</artifactId>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
