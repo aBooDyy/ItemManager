@@ -45,58 +45,58 @@ public class ItemUtils {
             if (is == null || is.getType() == Material.AIR) continue;
             meta = is.getItemMeta();
 
-            if (w.matExists()) matchMat = is.getType() == matchMaterial(w.mat);
+            if (w.matExists()) matchMat = is.getType() == matchMaterial(w.getMat());
 
-            if (w.strict)
-                matchData = is.getDurability() == w.data;
+            if (w.isStrict())
+                matchData = is.getDurability() == w.getData();
             else {
-                if (w.matExists() && matchMaterial(w.mat).getMaxDurability() == 0)
-                    matchData = is.getDurability() == w.data;
+                if (w.matExists() && matchMaterial(w.getMat()).getMaxDurability() == 0)
+                    matchData = is.getDurability() == w.getData();
                 else
-                    matchData = is.getDurability() <= w.data;
+                    matchData = is.getDurability() <= w.getData();
             }
 
             if (w.enchsExist()) {
                 String[] parts;
                 int matches = 0;
-                for (String ench : w.enchs) {
+                for (String ench : w.getEnchs()) {
                     parts = ench.split(":");
-                    if (w.strict) {
+                    if (w.isStrict()) {
                         if (is.getEnchantmentLevel(getEnchantment(parts[0])) == Integer.parseInt(parts[1])) matches++;
                     } else {
                         if (is.getEnchantmentLevel(getEnchantment(parts[0])) >= Integer.parseInt(parts[1])) matches++;
                     }
                 }
-                matchEnchs = matches == w.enchs.length;
+                matchEnchs = matches == w.getEnchs().length;
             }
 
             if (is.hasItemMeta() && meta.hasDisplayName()) {
                 if (w.nameSWExists())
-                    matchNameSW = meta.getDisplayName().startsWith(color(w.nameSW.replace(space, " ")));
+                    matchNameSW = meta.getDisplayName().startsWith(color(w.getNameSW().replace(space, " ")));
                 if (w.nameEExists())
-                    matchNameE = meta.getDisplayName().equals(color(w.nameE.replace(space, " ")));
+                    matchNameE = meta.getDisplayName().equals(color(w.getNameE().replace(space, " ")));
                 if (w.nameERExists())
-                    matchNameER = meta.getDisplayName().matches(w.nameER);
+                    matchNameER = meta.getDisplayName().matches(w.getNameER());
                 if (w.nameCExists())
-                    matchNameC = meta.getDisplayName().contains(color(w.nameC.replace(space, " ")));
+                    matchNameC = meta.getDisplayName().contains(color(w.getNameC().replace(space, " ")));
                 if (w.nameCRExists())
-                    matchNameCR = contains(meta.getDisplayName(), w.nameCR);
+                    matchNameCR = contains(meta.getDisplayName(), w.getNameCR());
                 if (w.nameEWExists())
-                    matchNameEW = meta.getDisplayName().endsWith(color(w.nameEW.replace(space, " ")));
+                    matchNameEW = meta.getDisplayName().endsWith(color(w.getNameEW().replace(space, " ")));
             }
 
             if (is.hasItemMeta() && meta.hasLore()) {
-                if (w.loreSWExists()) matchLoreSW = startsWith(meta.getLore(), w.loreSW);
-                if (w.loreEExists()) matchLoreE = Utils.equals(meta.getLore(), w.loreE);
-                if (w.loreCExists()) matchLoreC = contains(meta.getLore(), w.loreC);
-                if (w.loreCRExists()) matchLoreCR = containsR(meta.getLore(), w.loreCR);
-                if (w.loreEWExists()) matchLoreEW = endsWith(meta.getLore(), w.loreEW);
+                if (w.loreSWExists()) matchLoreSW = startsWith(meta.getLore(), w.getLoreSW());
+                if (w.loreEExists()) matchLoreE = Utils.equals(meta.getLore(), w.getLoreE());
+                if (w.loreCExists()) matchLoreC = contains(meta.getLore(), w.getLoreC());
+                if (w.loreCRExists()) matchLoreCR = containsR(meta.getLore(), w.getLoreCR());
+                if (w.loreEWExists()) matchLoreEW = endsWith(meta.getLore(), w.getLoreEW());
             }
 
             if (w.matExists() && !matchMat) continue;
             if (!matchData) continue;
 
-            if (w.strict) {
+            if (w.isStrict()) {
                 if (!w.enchsExist() && is.hasItemMeta() && meta.hasEnchants()) continue;
 
                 if (!w.nameSWExists() && !w.nameEExists() && !w.nameERExists() &&
@@ -128,7 +128,7 @@ public class ItemUtils {
         int total = 0;
         for (int i : slots) total += p.getInventory().getItem(i).getAmount();
 
-        if (total < w.amt) return null;
+        if (total < w.getAmt()) return null;
 
         return slots;
     }
