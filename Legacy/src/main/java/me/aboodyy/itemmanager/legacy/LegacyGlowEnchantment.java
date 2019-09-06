@@ -1,4 +1,4 @@
-package me.aboodyy.itemmanager.Legacy;
+package me.aboodyy.itemmanager.legacy;
 
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;

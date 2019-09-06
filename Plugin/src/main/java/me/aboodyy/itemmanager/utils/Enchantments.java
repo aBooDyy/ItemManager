@@ -1,6 +1,6 @@
 package me.aboodyy.itemmanager.utils;
 
-import me.aboodyy.itemmanager.Legacy.LegacyGlowEnchantment;
+import me.aboodyy.itemmanager.legacy.LegacyGlowEnchantment;
 import me.aboodyy.itemmanager.v1_13Plus.GlowEnchantment;
 import org.bukkit.enchantments.Enchantment;
 
