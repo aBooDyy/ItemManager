@@ -33,7 +33,7 @@ public class Messages {
                 .create();
 
         im.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip));
-        im.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://h"));
+        im.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org/resources/70136/"));
 
         right.addExtra(im);
         right.addExtra(left);
