@@ -26,6 +26,7 @@ import me.aboodyy.itemmanager.commands.enchantcommands.*;
 import me.aboodyy.itemmanager.commands.inventorycommands.*;
 import me.aboodyy.itemmanager.commands.metacommands.lorecommands.*;
 import me.aboodyy.itemmanager.commands.metacommands.RenameCommand;
+import me.aboodyy.itemmanager.updatechecker.SpigotUpdateChecker;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -49,6 +50,8 @@ public class ItemManager extends JavaPlugin {
     public void onEnable() {
         pl = this;
         isLegacy = !Bukkit.getBukkitVersion().contains("1.13") && !Bukkit.getBukkitVersion().contains("1.14");
+
+        SpigotUpdateChecker updateChecker = new SpigotUpdateChecker();
 
         Metrics metrics = new Metrics(this);
         this.getConfig().options().copyDefaults(true);
