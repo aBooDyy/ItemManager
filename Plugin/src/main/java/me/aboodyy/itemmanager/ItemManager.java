@@ -51,7 +51,7 @@ public class ItemManager extends JavaPlugin {
         List<String> materials = new ArrayList<>();
 
         for (Enchantment ench : Enchantment.values()) {
-            if (ench != null && !ench.toString().contains("99")) {
+            if (ench != null && !ench.toString().equals("9909")) {
                 if (isLegacy) {
                     enchantments.add(ench.getName().toLowerCase());
                     continue;

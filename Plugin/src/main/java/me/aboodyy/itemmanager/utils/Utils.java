@@ -2,6 +2,7 @@ package me.aboodyy.itemmanager.utils;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -76,5 +77,20 @@ public class Utils {
         return false;
     }
 
+    public static String[] convertAbbr(String path, String[] args) {
+        List<String> newArgs = new ArrayList<>();
+
+        if (getConfig().getConfigurationSection("abbreviations." + path) == null)
+            return args;
+
+        for (String arg : args) {
+            for (String key : getConfig().getConfigurationSection("abbreviations." + path).getKeys(false)) {
+                arg.replace("{" + key + "}", getConfig().getString("abbreviations." + path + "." + key));
+            }
+            newArgs.addAll(Arrays.asList(arg.split(" ")));
+        }
+
+        return newArgs.toArray(new String[0]);
+    }
 
 }

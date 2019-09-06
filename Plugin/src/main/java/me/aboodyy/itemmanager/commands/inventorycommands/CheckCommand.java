@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 
 import static me.aboodyy.itemmanager.utils.ItemUtils.getItemSlots;
 import static me.aboodyy.itemmanager.utils.Messages.color;
+import static me.aboodyy.itemmanager.utils.Utils.convertAbbr;
 import static org.bukkit.Material.matchMaterial;
 
 @CommandAlias("itemmanager|imanager|im")
@@ -21,7 +22,7 @@ public class CheckCommand extends BaseCommand {
     @Subcommand("check")
     @CommandCompletion("@players @modifiers")
     @CommandPermission("itemmanager.check")
-    public void onCheck(CommandSender sender, String[] args) {
+    public void onCheck(CommandSender sender, String[] arguments) {
         String mat = null, nameSW = null, nameE = null, nameER = null,
                 nameC = null, nameCR = null, nameEW = null, loreSW = null,
                 loreE = null, loreC = null, loreCR = null, loreEW = null;
@@ -29,6 +30,8 @@ public class CheckCommand extends BaseCommand {
         int data = 0, amt = 1;
         boolean strict = false;
         Player p;
+
+        String[] args = convertAbbr("check/remove", arguments);
 
         if (args.length < 1) {
             sender.sendMessage(color("&cIncorrect usage. &7/ItemManager check <Player> <Modifiers>"));

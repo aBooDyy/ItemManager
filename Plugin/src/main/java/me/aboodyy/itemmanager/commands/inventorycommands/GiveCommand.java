@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 import static me.aboodyy.itemmanager.ItemManager.pl;
 import static me.aboodyy.itemmanager.utils.Enchantments.getEnchantment;
 import static me.aboodyy.itemmanager.utils.Messages.color;
+import static me.aboodyy.itemmanager.utils.Utils.convertAbbr;
 import static org.bukkit.Material.matchMaterial;
 
 @CommandAlias("itemmanager|imanager|im")
@@ -31,7 +32,7 @@ public class GiveCommand extends BaseCommand {
     @Subcommand("give")
     @CommandCompletion("@players @materials @gmodifiers")
     @CommandPermission("itemmanager.give")
-    public void onGiving(CommandSender sender, String[] args) {
+    public void onGiving(CommandSender sender, String[] arguments) {
         String space = pl.getConfig().getString("symbols.space", "_");
         String newLine = pl.getConfig().getString("symbols.new_line", "|");
         int data = 0, amt = 1;
@@ -40,6 +41,7 @@ public class GiveCommand extends BaseCommand {
         Map<Enchantment, Integer> enchs = null;
         boolean unsafe = false;
 
+        String[] args = convertAbbr("give", arguments);
 
         if (args.length < 2) {
             sender.sendMessage(color("&cIncorrect usage. &7/ItemManager give <Player> <Material> [Modifiers]"));
