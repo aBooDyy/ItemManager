@@ -63,7 +63,7 @@ public class ItemManagerCommand extends BaseCommand {
                             "&7   - &fNameC:<NameContains> \n" +
                             "&7   - &fNameCR:<NameContainsRegex> \n" +
                             "&7   - &fNameEW:<NameEndsWith> \n" +
-                            "&7   - &fKoreSW:<LoreStartsWith> \n" +
+                            "&7   - &fLoreSW:<LoreStartsWith> \n" +
                             "&7   - &fLoreE:<LoreEquals> \n" +
                             "&7   - &fLoreC:<LoreContains> \n" +
                             "&7   - &fLoreCR:<LoreContainsRegex> \n" +
