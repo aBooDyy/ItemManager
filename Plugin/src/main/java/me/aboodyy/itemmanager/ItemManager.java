@@ -49,7 +49,11 @@ public class ItemManager extends JavaPlugin {
 
     public void onEnable() {
         pl = this;
-        isLegacy = !Bukkit.getBukkitVersion().contains("1.13") && !Bukkit.getBukkitVersion().contains("1.14");
+		if (Bukkit.getVersion().contains("1.6") || Bukkit.getVersion().contains("1.7") || Bukkit.getVersion().contains("1.8") || Bukkit.getVersion().contains("1.9") 
+				|| Bukkit.getVersion().contains("1.10") || Bukkit.getVersion().contains("1.11") || Bukkit.getVersion().contains("1.12"))
+			isLegacy = true;
+		else
+			isLegacy = false;
 
         SpigotUpdateChecker updateChecker = new SpigotUpdateChecker();
 
