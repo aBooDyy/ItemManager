@@ -32,6 +32,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
@@ -59,6 +60,7 @@ public class GiveCommand extends ItemManagerCommand {
         String name = null;
         List<String> lore = null;
         Map<Enchantment, Integer> enchs = null;
+        Map<Enchantment, Integer> anvilEnchs = null;
         boolean unsafe = false;
 
         String[] args = convertAbbr("give", arguments);
@@ -124,6 +126,18 @@ public class GiveCommand extends ItemManagerCommand {
                         enchs.put(getEnchantment(e[0]), Integer.parseInt(e[1]));
                     }
                     break;
+                case "anvilenchantments":
+                case "anvilenchs":
+                    String[] anvilEnchantments = arg[1].split("\\|");
+                    anvilEnchs = new HashMap<>();
+                    for (String ench : anvilEnchantments) {
+                        String[] e = ench.split(":", 2);
+                        if (e.length == 1) continue;
+                        if (!NumberUtils.isNumber(e[1]) || NumberUtils.isNumber(e[1]) && Integer.parseInt(e[1]) < 1) continue;
+
+                        anvilEnchs.put(getEnchantment(e[0]), Integer.parseInt(e[1]));
+                    }
+                    break;
                 case "unsafe":
                     unsafe = true;
             }
@@ -143,6 +157,18 @@ public class GiveCommand extends ItemManagerCommand {
             }
         }
         item.setItemMeta(meta);
+
+        if (anvilEnchs != null) {
+            try {
+                EnchantmentStorageMeta enchMeta = (EnchantmentStorageMeta) item.getItemMeta();
+                for (Enchantment ench : anvilEnchs.keySet()) {
+                    enchMeta.addStoredEnchant(ench, anvilEnchs.get(ench), unsafe);
+                }
+                item.setItemMeta(enchMeta);
+            } catch (ClassCastException e) {
+                sender.sendMessage(color("&cThe specified item can't have anvil enchantments."));
+            }
+        }
 
         p.getInventory().addItem(item);
     }

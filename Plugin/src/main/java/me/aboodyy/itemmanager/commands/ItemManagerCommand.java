@@ -68,6 +68,7 @@ public class ItemManagerCommand extends BaseCommand {
                             "&7   - &fName:<Display_Name> \n" +
                             "&7   - &fLore:<Lore_1|Lore_2> \n" +
                             "&7   - &fEnchs:<Ench:1|Ench2:1> \n" +
+                            "&7   - &AnvilEnchs:<Ench:1|Ench2:1> \n" +
                             "&7   - &fUnsafe \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Check",
                     "/itemmanager check ",
