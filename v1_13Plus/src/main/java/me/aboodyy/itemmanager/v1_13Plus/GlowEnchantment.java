@@ -43,7 +43,7 @@ public class GlowEnchantment extends Enchantment {
 
     @Override
     public String getName() {
-        return "Glow";
+        return "ItemManagerGlow";
     }
 
     @Override
