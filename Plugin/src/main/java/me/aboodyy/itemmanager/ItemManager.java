@@ -57,7 +57,7 @@ public class ItemManager extends JavaPlugin {
 
         SpigotUpdateChecker updateChecker = new SpigotUpdateChecker();
 
-        Metrics metrics = new Metrics(this);
+        Metrics metrics = new Metrics(this, 5308);
         this.getConfig().options().copyDefaults(true);
         this.saveDefaultConfig();
 
