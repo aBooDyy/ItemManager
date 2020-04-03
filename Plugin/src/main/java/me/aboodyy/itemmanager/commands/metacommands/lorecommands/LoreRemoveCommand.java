@@ -58,6 +58,7 @@ public class LoreRemoveCommand extends ItemManagerCommand {
         }
 
         switch (args.length) {
+            case 3:
             case 2:
                 p = Bukkit.getPlayerExact(args[1]);
                 if (NumberUtils.isNumber(args[0]))

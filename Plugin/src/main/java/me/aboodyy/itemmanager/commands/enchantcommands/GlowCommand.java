@@ -42,7 +42,7 @@ public class GlowCommand extends ItemManagerCommand {
     @CommandCompletion("@players")
     @CommandPermission("itemmanager.glow")
     public void onGlow(CommandSender sender, String[] args) {
-        if (!(sender instanceof Player) && args.length == 0 || args.length > 1) {
+        if (!(sender instanceof Player) && args.length == 0 || args.length > 2) {
             sender.sendMessage(color("&cIncorrect usage. &7/ItemManager glow [Player] [-S]"));
             return;
         }
