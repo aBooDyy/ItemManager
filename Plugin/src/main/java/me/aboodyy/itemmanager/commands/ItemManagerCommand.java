@@ -61,15 +61,16 @@ public class ItemManagerCommand extends BaseCommand {
             p.spigot().sendMessage(getMessage(" &b/ItemManager Give",
                     "/itemmanager give ",
                     "\n &fGive item to the player. \n\n" +
-                            " &9Usage: &f/IM Give <Player> <Material> [Modifiers] \n" +
+                            " &9Usage: &f/IM Give <Player> <Material> [Modifiers] [-S] \n" +
                             " &9Modifiers: \n" +
                             "&7   - &fAmt:<Amount> \n" +
                             "&7   - &fData:<Data/Durability> \n" +
                             "&7   - &fName:<Display_Name> \n" +
                             "&7   - &fLore:<Lore_1|Lore_2> \n" +
                             "&7   - &fEnchs:<Ench:1|Ench2:1> \n" +
-                            "&7   - &AnvilEnchs:<Ench:1|Ench2:1> \n" +
-                            "&7   - &fUnsafe \n"));
+                            "&7   - &fAnvilEnchs:<Ench:1|Ench2:1> \n" +
+                            "&7   - &fUnsafe \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Check",
                     "/itemmanager check ",
                     "\n &fCheck if the player has the specified item. \n\n" +
@@ -94,7 +95,7 @@ public class ItemManagerCommand extends BaseCommand {
             p.spigot().sendMessage(getMessage(" &b/ItemManager Remove",
                     "/itemmanager remove ",
                     "\n &fRemove the specified item from the player. \n\n" +
-                            " &9Usage: &f/IM Remove <Player> <Modifiers> \n" +
+                            " &9Usage: &f/IM Remove <Player> <Modifiers> [-S] \n" +
                             " &9Modifiers: \n" +
                             "&7   - &fMat:<Material> \n" +
                             "&7   - &fAmt:<Amount> \n" +
@@ -111,60 +112,69 @@ public class ItemManagerCommand extends BaseCommand {
                             "&7   - &fLoreCR:<LoreContainsRegex> \n" +
                             "&7   - &fLoreEW:<LoreEndsWith> \n" +
                             "&7   - &fEnchs:<Ench:1|Ench2:1> \n" +
-                            "&7   - &fStrict \n"));
+                            "&7   - &fStrict \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n"));
             p.sendMessage("");
             p.spigot().sendMessage(getMessage(" &b/ItemManager Rename",
                     "/itemmanager rename ",
                     "\n &fRenames the item in your hand, \n" +
                             " &for player's hand if specified. \n\n" +
-                            " &9Usage: &f/IM Rename <Name> [Player] \n" +
+                            " &9Usage: &f/IM Rename <Name> [Player] [-S] \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n\n" +
                             " &9Space symbol: &f" + space + " \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Lore Set",
                     "/itemmanager lore set ",
                     "\n &fSets the item's lore in your hand, \n" +
                             " &for player's hand if specified. \n\n" +
-                            " &9Usage: &f/IM Lore Set <Lore> [Player] \n\n" +
+                            " &9Usage: &f/IM Lore Set <Lore> [Player] [-S] \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n\n" +
                             " &9New line symbol: &f" + newLine + " \n" +
                             " &9Space symbol: &f" + space + " \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Lore Add",
-                    "/itemmanager lore set ",
+                    "/itemmanager lore add ",
                     "\n &fAdds new line to the current item's lore &fin your \n" +
                             " &fhand, or player's hand if specified. \n\n" +
-                            " &9Usage: &f/IM Lore Add [Line] <Lore> [Player] \n" +
-                            " &9Line: &fAdds the lore after this line if specified. \n\n" +
+                            " &9Usage: &f/IM Lore Add [Line] <Lore> [Player] [-S] \n" +
+                            " &9Line: &fAdds the lore after this line if specified. \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n\n" +
                             " &9New line symbol: &f" + newLine + " \n" +
                             " &9Space symbol: &f" + space + " \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Lore Remove",
                     "/itemmanager lore remove ",
                     "\n &fRemoves lore from the item in your hand, \n" +
                             " &for player's hand if specified. \n\n" +
-                            " &9Usage: &f/IM Lore Remove <Line/Lore/ALL> [Player] \n" +
+                            " &9Usage: &f/IM Lore Remove <Line/Lore/ALL> [Player] [-S] \n" +
                             " &9Line: &fRemoves this lore line. \n" +
                             " &9Lore: &fRemoves the line that contains this text. \n" +
-                            " &9ALL: &fRemoves the whole lore. \n\n" +
+                            " &9ALL: &fRemoves the whole lore. \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n\n" +
                             " &9New line symbol: &f" + newLine + " \n" +
                             " &9Space symbol: &f" + space + " \n"));
             p.sendMessage("");
             p.spigot().sendMessage(getMessage(" &b/ItemManager Enchant",
                     "/itemmanager enchant ",
                     "\n &fEnchants the item in your hand, &for player's hand if specified. \n\n" +
-                            " &9Usage: &f/IM Enchant <Enchantment> <Level> [Player] [Unsafe] \n"));
+                            " &9Usage: &f/IM Enchant <Enchantment> <Level> [Player] [Unsafe] [-S] \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Enchant Remove",
                     "/itemmanager enchant remove ",
                     "\n &fRemoves the enchantment from your hand, \n" +
                             " &for player's hand if specified. \n\n" +
-                            " &9Usage: &f/IM Enchant Remove <Enchantment> [Player] \n"));
+                            " &9Usage: &f/IM Enchant Remove <Enchantment> [Player] [-S] \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Glow",
                     "/itemmanager glow ",
                     "\n &fMakes the item in your hand glows, or player's \n" +
                             " &fhand if specified. \n\n" +
-                            " &9Usage: &f/IM Glow [Player] \n\n" +
+                            " &9Usage: &f/IM Glow [Player] [-S] \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n\n" +
                             " &9Note: &fThis command won't hide the other enchantments. \n"));
             p.spigot().sendMessage(getMessage(" &b/ItemManager Glow Remove",
                     "/itemmanager glow remove ",
                     "\n &fRemoves glow effect from your hand, \n" +
                             " &for player's hand if specified. \n\n" +
-                            " &9Usage: &f/IM Glow Remove [Player] \n"));
+                            " &9Usage: &f/IM Glow Remove [Player] [-S] \n" +
+                            " &9-S: &fIf set, successful message won't be sent. \n"));
             p.sendMessage("");
             p.sendMessage(color("&7&m                                                "));
             return;
