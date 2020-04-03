@@ -175,7 +175,7 @@ public class GiveCommand extends ItemManagerCommand {
 
         if (isSilent) return;
 
-        sender.sendMessage(color("aYou've given &f" + p.getName() + " &ax&f" + amt + " &a" + args[1] + "."));
+        sender.sendMessage(color("&aYou've given &f" + p.getName() + " &ax&f" + amt + " &a" + args[1] + "."));
     }
 
 }
