@@ -44,12 +44,13 @@ public class EnchantRemoveCommand extends ItemManagerCommand {
     public void onRemove(CommandSender sender, String[] args) {
 
         if (args.length == 0 || !(sender instanceof Player) && args.length != 2) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager enchant remove <enchantment> [player]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager enchant remove <enchantment> [player] [-S]"));
             return;
         }
 
         Player p = args.length == 2 ? Bukkit.getPlayerExact(args[1]) : (Player) sender;
         Enchantment ench = getEnchantment(args[0]);
+        boolean isSilent = args[args.length - 1].equalsIgnoreCase("-s");
 
         if (p == null) {
             sender.sendMessage(color("&f" + args[1] + " &cis not online."));
@@ -69,8 +70,10 @@ public class EnchantRemoveCommand extends ItemManagerCommand {
         }
 
         getItemInHand(p).removeEnchantment(ench);
-        sender.sendMessage(color("&f" + args[0] + " &aenchantment has successfully removed from &f" + p.getName() + "'s &a item."));
 
+        if (isSilent) return;
+
+        sender.sendMessage(color("&f" + args[0] + " &aenchantment has successfully removed from &f" + p.getName() + "'s &a item."));
     }
 
 }

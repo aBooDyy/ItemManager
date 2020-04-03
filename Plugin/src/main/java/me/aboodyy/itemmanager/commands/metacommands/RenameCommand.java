@@ -45,7 +45,7 @@ public class RenameCommand extends ItemManagerCommand {
         String space = getConfig().getString("symbols.space", "_");
 
         if (args.length == 0 || !(sender instanceof Player ) && args.length != 2) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager rename <newName> [player]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager rename <newName> [Player] [-S]"));
             return;
         }
 
@@ -60,9 +60,13 @@ public class RenameCommand extends ItemManagerCommand {
         }
 
         args[0] = args[0].replace(space, " ");
+        boolean isSilent = args[args.length - 1].equalsIgnoreCase("-s");
         ItemMeta meta = getItemInHand(p).getItemMeta();
         meta.setDisplayName(color(args[0]));
         getItemInHand(p).setItemMeta(meta);
+
+        if (isSilent) return;
+
         sender.sendMessage(color("&aItem name has been changed successfully to &f" + args[0] + " &afor &f" + p.getName()));
     }
 

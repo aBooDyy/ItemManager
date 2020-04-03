@@ -53,7 +53,7 @@ public class LoreRemoveCommand extends ItemManagerCommand {
         boolean all = false;
 
         if (args.length == 0 || !(sender instanceof Player) && args.length < 2) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore remove <line/lore/ALL> [player]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore remove <line/lore/ALL> [Player] [-S]"));
             return;
         }
 
@@ -76,7 +76,7 @@ public class LoreRemoveCommand extends ItemManagerCommand {
                 }
                 break;
             default:
-                sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore remove <line/lore/ALL> [player]"));
+                sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore remove <line/lore/ALL> [Player] [-S]"));
                 return;
         }
 
@@ -89,6 +89,7 @@ public class LoreRemoveCommand extends ItemManagerCommand {
             return;
         }
 
+        boolean isSilent = args[args.length - 1].equalsIgnoreCase("-s");
         ItemMeta meta = getItemInHand(p).getItemMeta();
         if (!meta.hasLore()) {
             sender.sendMessage(color("&cThe item doesn't have a lore to remove it."));
@@ -125,6 +126,9 @@ public class LoreRemoveCommand extends ItemManagerCommand {
         }
 
         getItemInHand(p).setItemMeta(meta);
+
+        if (isSilent) return;
+
         sender.sendMessage(color("&aItem lore has been successfully updated for &f" + p.getName()));
     }
 

@@ -55,7 +55,7 @@ public class SetCommand extends ItemManagerCommand {
         int line = -1;
 
         if (args.length == 0 || !(sender instanceof Player) && args.length < 2) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore set [line] <lore> [player]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore set [line] <lore> [Player] [-S]"));
             return;
         }
 
@@ -87,7 +87,7 @@ public class SetCommand extends ItemManagerCommand {
                 lore = args[0];
                 break;
             default:
-                sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore set [line] <lore> [player]"));
+                sender.sendMessage(color("&cIncorrect usage. &7/ItemManager lore set [line] <lore> [Player] [-S]"));
                 return;
         }
 
@@ -100,6 +100,7 @@ public class SetCommand extends ItemManagerCommand {
             return;
         }
 
+        boolean isSilent = args[args.length - 1].equalsIgnoreCase("-s");
         ItemMeta meta = getItemInHand(p).getItemMeta();
         lore = color(lore).replace(space, " ");
 
@@ -120,6 +121,9 @@ public class SetCommand extends ItemManagerCommand {
         }
 
         getItemInHand(p).setItemMeta(meta);
+
+        if (isSilent) return;
+
         sender.sendMessage(color("&aItem lore has been successfully updated for &f" + p.getName()));
     }
 

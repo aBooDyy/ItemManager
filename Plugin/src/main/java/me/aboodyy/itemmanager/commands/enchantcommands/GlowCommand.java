@@ -43,7 +43,7 @@ public class GlowCommand extends ItemManagerCommand {
     @CommandPermission("itemmanager.glow")
     public void onGlow(CommandSender sender, String[] args) {
         if (!(sender instanceof Player) && args.length == 0 || args.length > 1) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager glow [Player]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager glow [Player] [-S]"));
             return;
         }
 
@@ -54,6 +54,7 @@ public class GlowCommand extends ItemManagerCommand {
         }
 
         ItemStack item = getItemInHand(p);
+        boolean isSilent = args.length > 0 && args[args.length - 1].equalsIgnoreCase("-s");
 
         if (item == null || item.getType() == Material.AIR) {
             sender.sendMessage(color( "&f" + p.getName() + " &cisn't holding an item."));
@@ -61,6 +62,9 @@ public class GlowCommand extends ItemManagerCommand {
         }
 
         item.addUnsafeEnchantment(getGlowEnchantment(), 1);
+
+        if (isSilent) return;
+
         sender.sendMessage(color("&aGlow effect has been successfully added to &f" + p.getName() + "'s &aitem."));
     }
 

@@ -44,15 +44,15 @@ public class EnchantCommand extends ItemManagerCommand {
     @CommandCompletion("@enchantments @range:1-5 @players unsafe")
     @CommandPermission("itemmanager.enchant")
     public void onEnchant(CommandSender sender, String[] args) {
-        boolean unsafe = false;
+        boolean unsafe;
 
         if (args.length < 2 || !(sender instanceof Player) && args.length < 3) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager enchant <enchantment> <level> [player] [unsafe]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager enchant <enchantment> <level> [player] [unsafe] [-S]"));
             return;
         }
 
         if (!(sender instanceof Player) && args[2].equalsIgnoreCase("unsafe")) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager enchant <enchantment> <level> <player> [unsafe]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager enchant <enchantment> <level> <player> [unsafe] [-S]"));
             return;
         }
 
@@ -64,7 +64,9 @@ public class EnchantCommand extends ItemManagerCommand {
         Player p = args.length >= 3 && !args[2].equalsIgnoreCase("unsafe") ? Bukkit.getPlayerExact(args[2]) : (Player) sender;
         Enchantment ench = getEnchantment(args[0]);
         int level = Integer.parseInt(args[1]);
-        unsafe = args.length == 3 && args[2].equalsIgnoreCase("unsafe") || args.length == 4 && args[3].equalsIgnoreCase("unsafe");
+        boolean isSilent = args[args.length - 1].equalsIgnoreCase("-s");
+        unsafe = args[args.length - 2].equalsIgnoreCase("unsafe") ||
+                args[args.length - 1].equalsIgnoreCase("unsafe");
 
         if (p == null) {
             sender.sendMessage(color("&f" + args[2] + " &cis not online."));
@@ -92,9 +94,9 @@ public class EnchantCommand extends ItemManagerCommand {
             }
             getItemInHand(p).addEnchantment(ench, level);
         }
+        if (isSilent) return;
 
         sender.sendMessage(color("&f" + args[0] + " " + level + " &ahas been successfully added to &f" + p.getName() + "'s &aitem."));
-
     }
 
 }

@@ -52,7 +52,7 @@ public class ItemRemoveCommand extends ItemManagerCommand {
         String[] args = convertAbbr("check/remove", arguments);
 
         if (args.length < 1) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager remove <Player> <Modifiers>"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager remove <Player> <Modifiers> [-S]"));
             return;
         }
 
@@ -132,6 +132,7 @@ public class ItemRemoveCommand extends ItemManagerCommand {
         }
 
         List<Integer> slots = getItemSlots(p, wrapper);
+        boolean isSilent = args[args.length - 1].equalsIgnoreCase("-s");
 
         if (slots != null) {
             int left = wrapper.getAmt();
@@ -151,6 +152,9 @@ public class ItemRemoveCommand extends ItemManagerCommand {
 
                 break;
             }
+
+            if (isSilent) return;
+
             sender.sendMessage(color("&aThe specified item has been successfully removed from"));
             sender.sendMessage(color(p.getName() + "'s &ainventory."));
             return;

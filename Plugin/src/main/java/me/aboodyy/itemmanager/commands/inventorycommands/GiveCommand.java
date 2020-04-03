@@ -66,7 +66,7 @@ public class GiveCommand extends ItemManagerCommand {
         String[] args = convertAbbr("give", arguments);
 
         if (args.length < 2) {
-            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager give <Player> <Material> [Modifiers]"));
+            sender.sendMessage(color("&cIncorrect usage. &7/ItemManager give <Player> <Material> [Modifiers] [-S]"));
             return;
         }
 
@@ -145,6 +145,7 @@ public class GiveCommand extends ItemManagerCommand {
 
         ItemStack item = new ItemStack(mat, amt, (short) data);
         ItemMeta meta = item.getItemMeta();
+        boolean isSilent = args[args.length - 1].equalsIgnoreCase("-s");
 
         meta.setDisplayName(name);
         meta.setLore(lore);
@@ -171,6 +172,10 @@ public class GiveCommand extends ItemManagerCommand {
         }
 
         p.getInventory().addItem(item);
+
+        if (isSilent) return;
+
+        sender.sendMessage(color("aYou've given &f" + p.getName() + " &ax&f" + amt + " &a" + args[1] + "."));
     }
 
 }
