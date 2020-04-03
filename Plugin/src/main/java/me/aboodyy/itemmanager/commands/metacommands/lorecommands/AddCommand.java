@@ -60,6 +60,7 @@ public class AddCommand extends ItemManagerCommand {
         }
 
         switch (args.length) {
+            case 4:
             case 3:
                 p = Bukkit.getPlayerExact(args[2]);
                 lore = args[1];
