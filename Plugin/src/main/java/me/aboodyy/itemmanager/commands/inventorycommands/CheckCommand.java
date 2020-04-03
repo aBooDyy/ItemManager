@@ -92,6 +92,7 @@ public class CheckCommand extends ItemManagerCommand {
                     wrapper.setNameSW(arg[1]); break;
                 case "nameequals":
                 case "namee":
+                case "name":
                     wrapper.setNameE(arg[1]); break;
                 case "nameequalsregex":
                 case "nameer":
