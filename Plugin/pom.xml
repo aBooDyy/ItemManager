@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>ItemManager</artifactId>
-        <groupId>me.aboodyy.itemmanager</groupId>
+        <artifactId>itemmanager</artifactId>
+        <groupId>net.aboodyy.itemmanager</groupId>
         <version>1.1.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Plugin</artifactId>
+    <artifactId>plugin</artifactId>
     <version>${project.parent.version}</version>
 
     <dependencies>
@@ -32,15 +32,15 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>me.aboodyy.itemmanager</groupId>
-            <artifactId>v1_13Plus</artifactId>
+            <groupId>net.aboodyy.itemmanager</groupId>
+            <artifactId>v1_13plus</artifactId>
             <version>1.1.2</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>me.aboodyy.itemmanager</groupId>
-            <artifactId>Legacy</artifactId>
+            <groupId>net.aboodyy.itemmanager</groupId>
+            <artifactId>legacy</artifactId>
             <version>1.1.2</version>
             <type>jar</type>
             <scope>compile</scope>
@@ -72,11 +72,11 @@
                     <relocations>
                         <relocation>
                             <pattern>co.aikar.commands</pattern>
-                            <shadedPattern>me.aboodyy.itemmanager.dependencies.acf</shadedPattern>
+                            <shadedPattern>net.aboodyy.itemmanager.dependencies.acf</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>me.aboodyy.itemmanager.dependencies.bstats</shadedPattern>
+                            <shadedPattern>net.aboodyy.itemmanager.dependencies.bstats</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

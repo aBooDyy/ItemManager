@@ -2,7 +2,7 @@ name: ItemManager
 description: A plugin to manage items in player's inventory.
 version: ${project.parent.version}
 api-version: 1.13
-main: me.aboodyy.itemmanager.ItemManager
+main: net.aboodyy.itemmanager.ItemManager
 author: aBooDyy
 website: aBooDyy.net
 
