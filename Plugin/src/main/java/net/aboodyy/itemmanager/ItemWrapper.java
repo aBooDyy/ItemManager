@@ -22,7 +22,7 @@ package net.aboodyy.itemmanager;
 
 public class ItemWrapper {
 
-    private String mat, nameSW, nameE, nameER, nameC, nameCR, nameEW, loreSW, loreE, loreC, loreCR, loreEW;
+    private String mat, nameSW, nameE, nameER, nameC, nameCR, nameEW, loreSW, loreE, loreC, loreCR, loreEW, skullOwner;
     private String[] enchs;
     private int data = 0, amt = 1;
     private boolean strict = false;
@@ -81,6 +81,10 @@ public class ItemWrapper {
 
     public String getLoreEW() {
         return loreEW;
+    }
+
+    public String getSkullOwner() {
+        return skullOwner;
     }
 
     public String[] getEnchs() {
@@ -145,6 +149,10 @@ public class ItemWrapper {
 
     public void setLoreEW(String loreEW) {
         this.loreEW = loreEW;
+    }
+
+    public void setSkullOwner(String skullOwner) {
+        this.skullOwner = skullOwner;
     }
 
     public void setEnchs(String[] enchs) {
