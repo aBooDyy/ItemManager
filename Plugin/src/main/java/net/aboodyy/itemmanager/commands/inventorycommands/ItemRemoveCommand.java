@@ -90,6 +90,10 @@ public class ItemRemoveCommand extends ItemManagerCommand {
                         return;
                     }
                     wrapper.setData(Integer.parseInt(arg[1])); break;
+                case "owner":
+                case "skull":
+                case "skullowner":
+                    wrapper.setSkullOwner(arg[1]); break;
                 case "namestartswith":
                 case "namesw":
                     wrapper.setNameSW(arg[1]); break;

@@ -34,6 +34,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -57,6 +58,7 @@ public class GiveCommand extends ItemManagerCommand {
         String space = pl.getConfig().getString("symbols.space", "_");
         String newLine = pl.getConfig().getString("symbols.new_line", "|");
         int data = 0, amt = 1;
+        String skullOwner = null;
         String name = null;
         List<String> lore = null;
         Map<Enchantment, Integer> enchs = null;
@@ -108,6 +110,10 @@ public class GiveCommand extends ItemManagerCommand {
                     }
                     data = Integer.parseInt(arg[1]);
                     break;
+                case "skull":
+                case "owner":
+                case "skullowner":
+                    skullOwner = arg[1]; break;
                 case "name":
                     name = color(arg[1]).replace(space, " "); break;
                 case "lore":
@@ -169,6 +175,12 @@ public class GiveCommand extends ItemManagerCommand {
             } catch (ClassCastException e) {
                 sender.sendMessage(color("&cThe specified item can't have anvil enchantments."));
             }
+        }
+
+        if (meta instanceof SkullMeta && skullOwner != null) {
+            SkullMeta skullMeta = (SkullMeta) meta;
+            skullMeta.setOwner(skullOwner);
+            item.setItemMeta(skullMeta);
         }
 
         p.getInventory().addItem(item);

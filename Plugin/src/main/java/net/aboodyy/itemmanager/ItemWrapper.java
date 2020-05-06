@@ -167,6 +167,10 @@ public class ItemWrapper {
         return mat != null;
     }
 
+    public boolean skullOwnerExist() {
+        return skullOwner != null;
+    }
+
     public boolean nameSWExists() {
         return nameSW != null;
     }

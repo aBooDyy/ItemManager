@@ -25,6 +25,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class ItemUtils {
         String space = getConfig().getString("symbols.space", "_");
 
         List<Integer> slots = new ArrayList<>();
-        boolean matchMat = false, matchData, matchEnchs = false,
+        boolean matchMat = false, matchData, matchEnchs = false, matchSkullOwner = false,
 
                 matchNameSW = false, matchNameE = false, matchNameER = false,
                 matchNameC = false, matchNameCR = false, matchNameEW = false,
@@ -74,6 +75,11 @@ public class ItemUtils {
                     matchData = is.getDurability() == w.getData();
                 else
                     matchData = is.getDurability() <= w.getData();
+            }
+
+            if (w.skullOwnerExist() && meta instanceof SkullMeta) {
+                SkullMeta skullMeta = (SkullMeta) meta;
+                matchSkullOwner = skullMeta.hasOwner() && skullMeta.getOwner().equals(w.getSkullOwner());
             }
 
             if (w.enchsExist()) {
@@ -119,6 +125,8 @@ public class ItemUtils {
             if (w.isStrict()) {
                 if (!w.enchsExist() && is.hasItemMeta() && meta.hasEnchants()) continue;
 
+                if (!w.skullOwnerExist() && meta instanceof SkullMeta && ((SkullMeta) meta).hasOwner()) continue;
+
                 if (!w.nameSWExists() && !w.nameEExists() && !w.nameERExists() &&
                         !w.nameCExists() && !w.nameCRExists() && !w.nameEWExists() &&
                         is.hasItemMeta() && meta.hasDisplayName()) continue;
@@ -128,6 +136,8 @@ public class ItemUtils {
             }
 
             if (w.enchsExist() && !matchEnchs) continue;
+
+            if (w.skullOwnerExist() && !matchSkullOwner) continue;
 
             if (w.nameSWExists() && !matchNameSW) continue;
             if (w.nameEExists() && !matchNameE) continue;
