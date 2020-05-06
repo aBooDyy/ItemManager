@@ -49,7 +49,7 @@ public class ItemManagerCommand extends BaseCommand {
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(color("&9Hover for more info!")));
+            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(color("&bHover for more info!")));
             p.spigot().sendMessage(getHeader());
             p.sendMessage("");
             p.spigot().sendMessage(getMessage(" &b/ItemManager Help",
