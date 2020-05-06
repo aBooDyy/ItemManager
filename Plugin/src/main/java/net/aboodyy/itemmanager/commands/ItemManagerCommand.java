@@ -65,6 +65,7 @@ public class ItemManagerCommand extends BaseCommand {
                             " &9Modifiers: \n" +
                             "&7   - &fAmt:<Amount> \n" +
                             "&7   - &fData:<Data/Durability> \n" +
+                            "&7   - &fSkullOwner:<PlayerName> \n" +
                             "&7   - &fName:<Display_Name> \n" +
                             "&7   - &fLore:<Lore_1|Lore_2> \n" +
                             "&7   - &fEnchs:<Ench:1|Ench2:1> \n" +
@@ -79,6 +80,7 @@ public class ItemManagerCommand extends BaseCommand {
                             "&7   - &fMat:<Material> \n" +
                             "&7   - &fAmt:<Amount> \n" +
                             "&7   - &fData:<Data/Durability> \n" +
+                            "&7   - &fSkullOwner:<PlayerName> \n" +
                             "&7   - &fNameSW:<NameStartsWith> \n" +
                             "&7   - &fNameE:<NameEquals> \n" +
                             "&7   - &fNameER:<NameEqualsRegex> \n" +
@@ -100,6 +102,7 @@ public class ItemManagerCommand extends BaseCommand {
                             "&7   - &fMat:<Material> \n" +
                             "&7   - &fAmt:<Amount> \n" +
                             "&7   - &fData:<Data/Durability> \n" +
+                            "&7   - &fSkullOwner:<PlayerOwner> \n" +
                             "&7   - &fNameSW:<NameStartsWith> \n" +
                             "&7   - &fNameE:<NameEquals> \n" +
                             "&7   - &fNameER:<NameEqualsRegex> \n" +

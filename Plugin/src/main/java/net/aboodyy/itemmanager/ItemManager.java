@@ -108,10 +108,10 @@ public class ItemManager extends JavaPlugin {
         cmdManager.getCommandCompletions().registerCompletion("enchantments", c -> enchantments);
         cmdManager.getCommandCompletions().registerCompletion("materials", c -> materials);
         cmdManager.getCommandCompletions().registerCompletion("gmodifiers", c ->
-                Arrays.asList("amt:", "data:", "name:", "lore:", "enchs:", "anvilenchs", "unsafe")
+                Arrays.asList("amt:", "data:", "skullowner:", "name:", "lore:", "enchs:", "anvilenchs", "unsafe")
         );
         cmdManager.getCommandCompletions().registerCompletion("modifiers", c ->
-                Arrays.asList("mat:", "amt:", "data:", "nameSW:", "nameE:", "nameER:", "nameC:", "nameCR:",
+                Arrays.asList("mat:", "amt:", "data:", "skullowner:", "nameSW:", "nameE:", "nameER:", "nameC:", "nameCR:",
                         "nameEW:", "loreSW:", "loreE:", "loreC:", "loreCR:", "loreEW:", "enchs:", "strict")
         );
         cmdManager.getCommandCompletions().registerCompletion("lremove", c ->
