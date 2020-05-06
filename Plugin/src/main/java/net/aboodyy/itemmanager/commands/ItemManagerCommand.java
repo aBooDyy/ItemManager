@@ -22,6 +22,8 @@ package net.aboodyy.itemmanager.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -47,6 +49,7 @@ public class ItemManagerCommand extends BaseCommand {
 
         if (sender instanceof Player) {
             Player p = (Player) sender;
+            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(color("&9Hover for more info!")));
             p.spigot().sendMessage(getHeader());
             p.sendMessage("");
             p.spigot().sendMessage(getMessage(" &b/ItemManager Help",
